@@ -111,13 +111,13 @@ function todosReducer (state = initialState, action) {
       const newTodos = [...todos];
       newTodos.splice(
         newTodos.findIndex(todo => todo.id === task.id),
-        1
+        1,
+        task
       );
-      const newestTodos = [...newTodos, task]; /// AAAA!!! ну пока так, потом разберусь
 
       return {
         ...state,
-        todos: newestTodos,
+        todos: newTodos,
         isFetching: false,
       };
     }
