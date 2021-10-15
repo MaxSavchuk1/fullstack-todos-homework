@@ -8,9 +8,9 @@ export const getTodosRequest = () => ({
   type: ACTION_TYPES.GET_TODOS_REQUEST,
 });
 
-export const getTodosSuccess = todos => ({
+export const getTodosSuccess = tasks => ({
   type: ACTION_TYPES.GET_TODOS_SUCCESS,
-  todos,
+  tasks,
 });
 
 export const getTodosError = error => ({
@@ -27,9 +27,9 @@ export const createTodoRequest = () => ({
   type: ACTION_TYPES.CREATE_TODO_REQUEST,
 });
 
-export const createTodoSuccess = todo => ({
+export const createTodoSuccess = task => ({
   type: ACTION_TYPES.CREATE_TODO_SUCCESS,
-  todo,
+  task,
 });
 
 export const createTodoError = error => ({
@@ -46,9 +46,9 @@ export const deleteTodoRequest = () => ({
   type: ACTION_TYPES.DELETE_TODO_REQUEST,
 });
 
-export const deleteTodoSuccess = deletedTodo => ({
+export const deleteTodoSuccess = id => ({
   type: ACTION_TYPES.DELETE_TODO_SUCCESS,
-  deletedTodo,
+  id,
 });
 
 export const deleteTodoError = error => ({
@@ -56,21 +56,21 @@ export const deleteTodoError = error => ({
   error,
 });
 
-export const statusTodoAction = id => ({
-  type: ACTION_TYPES.STATUS_TODO_ACTION,
+export const updateTodoAction = id => ({
+  type: ACTION_TYPES.UPDATE_TODO_ACTION,
   id,
 });
 
-export const statusTodoRequest = () => ({
-  type: ACTION_TYPES.STATUS_TODO_REQUEST,
+export const updateTodoRequest = () => ({
+  type: ACTION_TYPES.UPDATE_TODO_REQUEST,
 });
 
-export const statusTodoSuccess = id => ({
-  type: ACTION_TYPES.STATUS_TODO_SUCCESS,
+export const updateTodoSuccess = id => ({
+  type: ACTION_TYPES.UPDATE_TODO_SUCCESS,
   id,
 });
 
-export const statusTodoError = error => ({
-  type: ACTION_TYPES.STATUS_TODO_ERROR,
+export const updateTodoError = error => ({
+  type: ACTION_TYPES.UPDATE_TODO_ERROR,
   error,
 });

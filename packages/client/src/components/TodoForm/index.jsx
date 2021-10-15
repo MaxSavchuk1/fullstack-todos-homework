@@ -11,7 +11,7 @@ function TodoForm () {
   const dispatch = useDispatch();
   const { createTodoAction } = bindActionCreators(actionCreators, dispatch);
 
-  const initialValues = { body: '', isDone: false };
+  const initialValues = { taskBody: '' };
 
   const submitHandler = (values, formikBag) => {
     createTodoAction(values);
@@ -19,9 +19,9 @@ function TodoForm () {
   };
 
   const TASK_SCHEMA = yup.object({
-    body: yup
+    taskBody: yup
       .string()
-      .max(100, 'Too big task :)')
+      .max(255, 'Too big task :)')
       .matches(/^\S+.*/, 'No spaces in start')
       .required('Enter task'),
   });
@@ -33,11 +33,11 @@ function TodoForm () {
       validationSchema={TASK_SCHEMA}
     >
       <Form className={styles.formContainer}>
-        <Field type='text' name='body' placeholder='Enter todo here' />
+        <Field type='text' name='taskBody' placeholder='Enter todo here' />
         <button type='sumbit'>Submit</button>
 
         <ErrorMessage
-          name='body'
+          name='taskBody'
           render={msg => (
             <div className='animate__animated animate__jackInTheBox'>{msg}</div>
           )}

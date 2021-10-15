@@ -1,21 +1,15 @@
-const todoTasks = [{ id: Date.now(), body: 'Do something', isDone: false }];
+import axios from 'axios';
 
-export const getTodos = () => {
-  return Promise.resolve({ data: todoTasks });
+const axiosOptions = {
+  baseURL: 'http://localhost:5000/api',
 };
 
-export const createTodo = task => {
-  const newTodoTask = { ...task, id: Date.now() };
-  todoTasks.push(newTodoTask);
-  return Promise.resolve({ data: newTodoTask });
-};
+const apiInstance = axios.create(axiosOptions);
 
-export const deleteTodo = id => {
-  const index = todoTasks.findIndex(todo => todo.id === id);
-  return Promise.resolve({ data: todoTasks.splice(index, 1) });
-};
+export const getTasks = () => apiInstance.get('/tasks');
 
-export const statusTodo = id => {
-  const index = todoTasks.findIndex(todo => todo.id === id);
-  return Promise.resolve({ data: todoTasks[index].id });
-};
+export const createTask = task => apiInstance.post('/tasks', task);
+
+export const deleteTask = id => apiInstance.delete(`/tasks/${id}`);
+
+export const updateTask = id => apiInstance.patch(`/tasks/${id}`);

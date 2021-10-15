@@ -9,7 +9,7 @@ function TodoList () {
   const { todos, error, isFetching } = useSelector(state => state.todos);
   const dispatch = useDispatch();
   const {
-    statusTodoAction,
+    updateTodoAction,
     getTodosAction,
     deleteTodoAction,
   } = bindActionCreators(actionCreators, dispatch);
@@ -18,12 +18,12 @@ function TodoList () {
     getTodosAction();
   }, []);
 
-  const mapTodo = ({ body, isDone, id }) => {
+  const mapTodo = ({ taskBody, isDone, id }) => {
     const deleteHandler = () => {
       deleteTodoAction(id);
     };
     const changeStatusHandler = () => {
-      statusTodoAction(id);
+      updateTodoAction(id);
     };
     return (
       <li key={id}>
@@ -32,7 +32,7 @@ function TodoList () {
           checked={isDone}
           onChange={changeStatusHandler}
         />
-        {body}
+        {taskBody}
         <button onClick={deleteHandler}>
           <DeleteIcon fontSize='small' />
         </button>

@@ -19,8 +19,9 @@ function todosReducer (state = initialState, action) {
     }
 
     case ACTION_TYPES.GET_TODOS_SUCCESS: {
-      const { todos } = action;
-      const newTodos = [...todos];
+      const { tasks } = action;
+      console.log(`tasks`, tasks);
+      const newTodos = [...tasks];
       return {
         ...state,
         isFetching: false,
@@ -46,9 +47,9 @@ function todosReducer (state = initialState, action) {
     }
 
     case ACTION_TYPES.CREATE_TODO_SUCCESS: {
-      const { todo } = action;
+      const { task } = action;
       const { todos } = state;
-      const newTodos = [...todos, todo];
+      const newTodos = [...todos, task];
       return {
         ...state,
         todos: newTodos,
@@ -74,11 +75,11 @@ function todosReducer (state = initialState, action) {
     }
 
     case ACTION_TYPES.DELETE_TODO_SUCCESS: {
-      const { deletedTodo } = action;
+      const { id } = action;
       const { todos } = state;
       const newTodos = [...todos];
       newTodos.splice(
-        newTodos.findIndex(todo => todo.id === deletedTodo[0].id),
+        newTodos.findIndex(todo => todo.id === id),
         1
       );
       return {
@@ -97,7 +98,7 @@ function todosReducer (state = initialState, action) {
       };
     }
 
-    case ACTION_TYPES.STATUS_TODO_REQUEST: {
+    case ACTION_TYPES.UPDATE_TODO_REQUEST: {
       return {
         ...state,
         isFetching: true,
@@ -105,7 +106,7 @@ function todosReducer (state = initialState, action) {
       };
     }
 
-    case ACTION_TYPES.STATUS_TODO_SUCCESS: {
+    case ACTION_TYPES.UPDATE_TODO_SUCCESS: {
       const { id } = action;
       const { todos } = state;
       const newTodos = [...todos];
@@ -118,7 +119,7 @@ function todosReducer (state = initialState, action) {
       };
     }
 
-    case ACTION_TYPES.STATUS_TODO_ERROR: {
+    case ACTION_TYPES.UPDATE_TODO_ERROR: {
       const { error } = action;
       return {
         ...state,
