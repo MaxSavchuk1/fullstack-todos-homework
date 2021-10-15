@@ -23,6 +23,7 @@ function TodoList () {
       deleteTodoAction(id);
     };
     const changeStatusHandler = () => {
+      isDone = !isDone;
       updateTodoAction(id, isDone);
     };
     return (

@@ -46,7 +46,6 @@ module.exports.updateTask = async (req, res, next) => {
     body,
     params: { taskId },
   } = req;
-  console.log(`body`, body); ////////////
   try {
     const [count, [updatedTask]] = await Task.update(body, {
       where: { id: taskId },
