@@ -56,18 +56,19 @@ export const deleteTodoError = error => ({
   error,
 });
 
-export const updateTodoAction = id => ({
+export const updateTodoAction = (id, isDone) => ({
   type: ACTION_TYPES.UPDATE_TODO_ACTION,
   id,
+  isDone,
 });
 
 export const updateTodoRequest = () => ({
   type: ACTION_TYPES.UPDATE_TODO_REQUEST,
 });
 
-export const updateTodoSuccess = id => ({
+export const updateTodoSuccess = task => ({
   type: ACTION_TYPES.UPDATE_TODO_SUCCESS,
-  id,
+  task,
 });
 
 export const updateTodoError = error => ({

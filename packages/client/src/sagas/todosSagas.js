@@ -39,11 +39,13 @@ export function * deleteTodoSaga (action) {
 }
 
 export function * updateTodoSaga (action) {
-  const { id } = action;
+  const { id, isDone } = action;
   yield put(ACT.updateTodoRequest());
   try {
-    yield API.updateTask(id);
-    yield put(ACT.updateTodoSuccess(id));
+    const {
+      data: { data: task },
+    } = yield API.updateTask(id, isDone);
+    yield put(ACT.updateTodoSuccess(task));
   } catch (error) {
     yield put(ACT.updateTodoError(error));
   }

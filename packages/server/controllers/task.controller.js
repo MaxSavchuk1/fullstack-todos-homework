@@ -43,15 +43,19 @@ module.exports.deleteTask = async (req, res, next) => {
 
 module.exports.updateTask = async (req, res, next) => {
   const {
+    body,
     params: { taskId },
   } = req;
-  const body = { isDone: !isDone }; // пока заглушка
+  console.log(`body`, body); ////////////
   try {
-    const [count] = await Phone.update(body, {
+    const [count, [updatedTask]] = await Task.update(body, {
       where: { id: taskId },
+      returning: true,
     });
-    if (count) {
-      res.status(204).send();
+
+    if (count > 0) {
+      const preparedTask = _.omit(updatedTask.get(), excludedData);
+      res.status(200).send({ data: preparedTask });
     } else {
       res.status(404).send('Not found');
     }

@@ -20,7 +20,6 @@ function todosReducer (state = initialState, action) {
 
     case ACTION_TYPES.GET_TODOS_SUCCESS: {
       const { tasks } = action;
-      console.log(`tasks`, tasks);
       const newTodos = [...tasks];
       return {
         ...state,
@@ -107,14 +106,18 @@ function todosReducer (state = initialState, action) {
     }
 
     case ACTION_TYPES.UPDATE_TODO_SUCCESS: {
-      const { id } = action;
+      const { task } = action;
       const { todos } = state;
       const newTodos = [...todos];
-      const index = newTodos.findIndex(todo => todo.id === id);
-      newTodos[index].isDone = !newTodos[index].isDone;
+      newTodos.splice(
+        newTodos.findIndex(todo => todo.id === task.id),
+        1
+      );
+      const newestTodos = [...newTodos, task]; /// AAAA!!! ну пока так, потом разберусь
+
       return {
         ...state,
-        todos: newTodos,
+        todos: newestTodos,
         isFetching: false,
       };
     }

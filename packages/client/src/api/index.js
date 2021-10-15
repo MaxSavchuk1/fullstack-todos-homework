@@ -12,4 +12,6 @@ export const createTask = task => apiInstance.post('/tasks', task);
 
 export const deleteTask = id => apiInstance.delete(`/tasks/${id}`);
 
-export const updateTask = id => apiInstance.patch(`/tasks/${id}`);
+export const updateTask = (id, isDone) => {
+  return apiInstance.patch(`/tasks/${id}`, { isDone });
+};
