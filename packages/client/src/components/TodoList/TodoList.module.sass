@@ -1,19 +1,26 @@
 @import '../../common/styles/_templates'
   
-.listContainer
-  @extend %flex-container
-  flex-direction: column
-  width: 100%
-
-  li
+.listItem
     @extend %flex-container
-    width: 80%
-    border: 2px solid black
-    margin: 5px 0
-    padding: 3px 10px
-
-    input
-      margin-right: 5px
-      
+    list-style-type: none
+    margin: 7px 0px
+    padding: 5px
+    border: 2px solid white
+    border-radius: 3px
+    box-shadow: 3px 3px 6px black
+    background-color: #e2ebff
     button
-      margin-left: auto
+        margin-left: auto
+        background-color: white
+        border: 2px solid lightgrey
+        border-radius: 6px
+        cursor: pointer
+    input
+        margin: auto 15px
+
+.listContainer
+    width: 100%
+    margin: 25px 0px
+    ul
+        padding: 0
+        margin: 0

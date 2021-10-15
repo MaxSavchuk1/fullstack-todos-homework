@@ -27,7 +27,7 @@ function TodoList () {
       updateTodoAction(id, isDone);
     };
     return (
-      <li key={id}>
+      <li key={id} className={styles.listItem}>
         <input
           type='checkbox'
           checked={isDone}

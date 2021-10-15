@@ -1,11 +1,11 @@
+import { Form, Formik } from 'formik';
 import React from 'react';
-import { Field, Form, Formik, ErrorMessage } from 'formik';
-import { useDispatch } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { useDispatch } from 'react-redux';
 import * as yup from 'yup';
-import 'animate.css';
-import * as actionCreators from './../../actions';
+import * as actionCreators from '../../actions';
 import styles from './TodoForm.module.sass';
+import Input from '../Input';
 
 function TodoForm () {
   const dispatch = useDispatch();
@@ -26,6 +26,13 @@ function TodoForm () {
       .required('Enter task'),
   });
 
+  const inputClasses = {
+    valid: styles.valid,
+    invalid: styles.invalid,
+    input: styles.input,
+    errorStyle: styles.error,
+  };
+
   return (
     <Formik
       initialValues={initialValues}
@@ -33,15 +40,15 @@ function TodoForm () {
       validationSchema={TASK_SCHEMA}
     >
       <Form className={styles.formContainer}>
-        <Field type='text' name='taskBody' placeholder='Enter todo here' />
-        <button type='sumbit'>Submit</button>
-
-        <ErrorMessage
+        <Input
+          type='text'
           name='taskBody'
-          render={msg => (
-            <div className='animate__animated animate__jackInTheBox'>{msg}</div>
-          )}
+          placeholder='Enter todo here'
+          classes={inputClasses}
         />
+        <button type='sumbit' className={styles.button}>
+          Submit
+        </button>
       </Form>
     </Formik>
   );

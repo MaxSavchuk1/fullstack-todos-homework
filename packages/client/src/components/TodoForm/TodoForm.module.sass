@@ -1,22 +1,47 @@
-@import '../../common/styles/_templates'
-  
 .formContainer
-  @extend %flex-container
-  width: 100%
-  margin: 15px 0
+  width:100%
+  display: flex
   position: relative
-  input
-    width:70%
-    padding: 5px
-  button
-    padding: 5px
-  div
-    position: absolute
-    z-index: 99
-    top: -100%
-    font-weight: bold
-    text-transform: uppercase
-    background: red
+
+.input
+  width: 150px
+  height: 25px
+  padding: 2px 2px 2px 15px
+  font-size: 1em
+  transition: all 0.4s ease-in-out
+  box-shadow: 3px 3px 6px black
+  border-radius: 5px 0 0 5px
+  border: none
+  &:focus
+    outline: none
     width: 100%
-    text-align: center
-    padding: 5px 0
+    height: 50px
+    padding: 5px 5px 5px 25px
+    font-size: 1.3em
+
+.button
+  width: 85px
+  box-shadow: 3px 3px 6px black
+  border-radius: 0 5px 5px 0
+  cursor: pointer
+  border: none
+  border-left: 2px solid #a7a7a7
+
+
+.error
+  position: absolute
+  top: -50px
+  width: 100%
+  text-align: center
+  text-transform: uppercase
+  color: #ff7171
+  &::before
+    content: '! - '
+  &::after
+    content: ' - !'
+
+.valid
+    background-color: #b0ffd1
+
+.invalid
+    background-color: #ffd0d0
