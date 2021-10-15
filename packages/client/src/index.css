@@ -1,0 +1,15 @@
+@import './reset.css';
+* {
+  box-sizing: border-box;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+#root {
+  height: 100vh;
+  font-family: 'Gill Sans', 'Open Sans', 'Fira Sans', 'Lucida Sans',
+    'Lucida Sans Unicode', sans-serif;
+}

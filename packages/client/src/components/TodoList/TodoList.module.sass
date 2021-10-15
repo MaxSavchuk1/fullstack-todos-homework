@@ -1,0 +1,19 @@
+@import '../../common/styles/_templates'
+  
+.listContainer
+  @extend %flex-container
+  flex-direction: column
+  width: 100%
+
+  li
+    @extend %flex-container
+    width: 80%
+    border: 2px solid black
+    margin: 5px 0
+    padding: 3px 10px
+
+    input
+      margin-right: 5px
+      
+    button
+      margin-left: auto
