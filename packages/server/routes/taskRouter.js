@@ -3,6 +3,9 @@ const { taskController } = require('../controllers');
 
 const taskRouter = Router();
 
-// taskRouter.get('/', taskController.getTasks);
+taskRouter
+  .route('/')
+  .get(taskController.getTasks)
+  .post(taskController.createTask);
 
 module.exports = taskRouter;
