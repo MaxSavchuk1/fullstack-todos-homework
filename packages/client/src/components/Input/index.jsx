@@ -10,9 +10,9 @@ function Input (props) {
   const [field, { touched, error }] = useField(props);
 
   const {
-    values: { todo },
+    values: { taskBody },
   } = useFormikContext();
-  const isInvalid = todo && touched && error;
+  const isInvalid = taskBody && touched && error; // чтоб после смены фокуса не вылетала ошибка
 
   const inputStyle = classNames(
     input,

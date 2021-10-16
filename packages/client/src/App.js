@@ -5,11 +5,3 @@ function App () {
 }
 
 export default App;
-
-/********************************* */
-
-// const date = new Date().toLocaleDateString({
-//   day: 'numeric',
-//   month: 'numeric',
-//   year: 'numeric',
-// });

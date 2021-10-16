@@ -7,14 +7,16 @@ module.exports.validationErrorHandler = (err, req, res, next) => {
   if (err instanceof ValidationError) {
     return res
       .status(422)
-      .send({ errors: [{ title: 'Validation Error', ditails: err.errors }] });
+      .send({ errors: [{ title: 'Validation Error', details: err.errors }] });
   }
   next(err);
 };
 
 module.exports.sequelizeErrorHandler = (err, req, res, next) => {
   if (err instanceof BaseError) {
-    // ToDo handler
+    return res
+      .status(409)
+      .send({ errors: [{ title: 'Database Error', details: err.errors }] });
   }
   next(err);
 };

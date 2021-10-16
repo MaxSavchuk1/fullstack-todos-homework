@@ -40,11 +40,11 @@ function TodoList () {
       </li>
     );
   };
-
+  console.log('error :>> ', error);
   return (
     <>
-      {isFetching && <div>Loading...</div>}
-      {error && <div>ERROR</div>}
+      {isFetching && <div className={styles.statusMessage}>Loading...</div>}
+      {error && <div className={styles.statusMessage}>Error</div>}
       <ul className={styles.listContainer}>{todos.map(mapTodo)}</ul>
     </>
   );
