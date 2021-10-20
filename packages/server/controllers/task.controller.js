@@ -7,6 +7,7 @@ module.exports.getTasks = async (req, res, next) => {
   try {
     const foundTasks = await Task.findAll({
       raw: true,
+      order: [['createdAt', 'ASC']],
       attributes: { exclude: excludedData },
     });
     res.status(200).send({ data: foundTasks });
