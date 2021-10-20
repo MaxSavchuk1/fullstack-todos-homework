@@ -9,6 +9,7 @@ module.exports.getTasks = async (req, res, next) => {
       raw: true,
       order: [['createdAt', 'ASC']],
       attributes: { exclude: excludedData },
+      limit: 5, // <<<<<<<
     });
     res.status(200).send({ data: foundTasks });
   } catch (e) {
