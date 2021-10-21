@@ -6,9 +6,9 @@ export function * getTodosSaga () {
   yield put(ACT.getTodosRequest());
   try {
     const {
-      data: { data: tasks },
+      data: { data: tasks, metadata: tasksAmount },
     } = yield API.getTasks();
-    yield put(ACT.getTodosSuccess(tasks));
+    yield put(ACT.getTodosSuccess(tasks, tasksAmount));
   } catch (error) {
     yield put(ACT.getTodosError(error));
   }

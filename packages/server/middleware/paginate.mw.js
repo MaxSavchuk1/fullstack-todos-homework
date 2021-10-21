@@ -5,6 +5,6 @@ const {
 
 module.exports.tasksPagination = async (req, res, next) => {
   const {
-    query: { page },
+    query: { page, results },
   } = req;
 };

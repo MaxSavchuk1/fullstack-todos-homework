@@ -8,9 +8,10 @@ export const getTodosRequest = () => ({
   type: ACTION_TYPES.GET_TODOS_REQUEST,
 });
 
-export const getTodosSuccess = tasks => ({
+export const getTodosSuccess = (tasks, tasksAmount) => ({
   type: ACTION_TYPES.GET_TODOS_SUCCESS,
   tasks,
+  tasksAmount,
 });
 
 export const getTodosError = error => ({

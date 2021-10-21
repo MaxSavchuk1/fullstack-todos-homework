@@ -6,7 +6,9 @@ import styles from './TodoList.module.sass';
 import * as actionCreators from './../../actions';
 
 function TodoList () {
-  const { todos, error, isFetching } = useSelector(state => state.todos);
+  const { todos, error, isFetching, tasksAmount } = useSelector(
+    state => state.todos
+  );
   const dispatch = useDispatch();
   const {
     updateTodoAction,

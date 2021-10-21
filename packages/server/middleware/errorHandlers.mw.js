@@ -23,22 +23,19 @@ module.exports.sequelizeErrorHandler = (err, req, res, next) => {
       .send({ errors: [{ title: 'Already exists', details: err.errors }] });
   }
   if (err instanceof seqValidationError) {
-    console.log(`err.errors`, err.errors);
     return res.status(422).send({
       errors: [
         {
-          title: 'Must contain only letters and numbers',
+          title: 'Incorrect task',
           details: err.errors,
         },
       ],
     });
   }
   if (err instanceof BaseError) {
-    return res
-      .status(418)
-      .send({
-        errors: [{ title: 'Something strange happened', details: err.errors }],
-      });
+    return res.status(418).send({
+      errors: [{ title: 'Something strange happened', details: err.errors }],
+    });
   }
 
   next(err);

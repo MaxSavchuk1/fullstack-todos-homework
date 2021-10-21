@@ -11,7 +11,8 @@ module.exports.getTasks = async (req, res, next) => {
       attributes: { exclude: excludedData },
       limit: 5,
     });
-    res.status(200).send({ data: foundTasks });
+    const tasksAmount = await Task.count(); // данные над данными - метаданные. Логично же, ну
+    res.status(200).send({ data: foundTasks, metadata: tasksAmount });
   } catch (e) {
     next(e);
   }

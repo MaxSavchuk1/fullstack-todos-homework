@@ -4,6 +4,7 @@ const initialState = {
   todos: [],
   error: null,
   isFetching: false,
+  tasksAmount: 0,
 };
 
 function todosReducer (state = initialState, action) {
@@ -19,12 +20,13 @@ function todosReducer (state = initialState, action) {
     }
 
     case ACTION_TYPES.GET_TODOS_SUCCESS: {
-      const { tasks } = action;
+      const { tasks, tasksAmount } = action;
       const newTodos = [...tasks];
       return {
         ...state,
         isFetching: false,
         todos: newTodos,
+        tasksAmount,
       };
     }
 
