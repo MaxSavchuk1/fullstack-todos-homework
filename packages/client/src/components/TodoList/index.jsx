@@ -16,7 +16,7 @@ function TodoList () {
 
   useEffect(() => {
     getTodosAction();
-  }, []);
+  }, [todos.length]);
 
   const mapTodo = ({ taskBody, isDone, id }) => {
     const deleteHandler = () => {
@@ -40,11 +40,14 @@ function TodoList () {
       </li>
     );
   };
-  console.log('error :>> ', error);
+
   return (
     <>
-      {isFetching && <div className={styles.statusMessage}>Loading...</div>}
-      {error && <div className={styles.statusMessage}>Error</div>}
+      <div className={styles.statusMessage}>
+        {isFetching && <p>Loading...</p>}
+        {error && <p>Error</p>}
+      </div>
+
       <ul className={styles.listContainer}>{todos.map(mapTodo)}</ul>
     </>
   );

@@ -8,7 +8,12 @@ module.exports = (sequelize, DataTypes) => {
   }
   Task.init(
     {
-      taskBody: { type: DataTypes.STRING, allowNull: false, unique: true },
+      taskBody: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        unique: true,
+        validate: { notContains: 'fuck' }, // :)
+      },
       isDone: {
         type: DataTypes.BOOLEAN,
         allowNull: false,
