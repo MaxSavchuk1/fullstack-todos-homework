@@ -9,6 +9,7 @@ function TodoList () {
   const { todos, error, isFetching, tasksAmount } = useSelector(
     state => state.todos
   );
+
   const dispatch = useDispatch();
   const {
     updateTodoAction,

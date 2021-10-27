@@ -4,12 +4,14 @@ const _ = require('lodash');
 const excludedData = ['createdAt', 'updatedAt'];
 
 module.exports.getTasks = async (req, res, next) => {
+  const { pagination } = req;
+
   try {
     const foundTasks = await Task.findAll({
       raw: true,
       order: [['createdAt', 'DESC']],
       attributes: { exclude: excludedData },
-      limit: 5,
+      ...pagination,
     });
     const tasksAmount = await Task.count(); // данные над данными - метаданные. Логично же, ну
     res.status(200).send({ data: foundTasks, metadata: tasksAmount });

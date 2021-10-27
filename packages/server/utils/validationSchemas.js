@@ -5,10 +5,12 @@ module.exports.PAGINATION_VALIDATION_SCHEMA = yup.object().shape({
     .number()
     .min(1)
     .max(10)
+    .integer()
     .required(),
   offset: yup
     .number()
-    .min(1)
+    .positive()
+    .integer()
     .required(),
 });
 
