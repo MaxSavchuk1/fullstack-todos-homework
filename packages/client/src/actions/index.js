@@ -1,7 +1,8 @@
 import ACTION_TYPES from './actionTypes';
 
-export const getTodosAction = () => ({
+export const getTodosAction = page => ({
   type: ACTION_TYPES.GET_TODOS_ACTION,
+  page,
 });
 
 export const getTodosRequest = () => ({

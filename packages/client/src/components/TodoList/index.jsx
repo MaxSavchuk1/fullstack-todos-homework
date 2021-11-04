@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import DeleteIcon from '@material-ui/icons/Delete';
 import styles from './TodoList.module.sass';
 import * as actionCreators from './../../actions';
+import TodoPagination from '../TodoPagination';
 
 function TodoList () {
   const { todos, error, isFetching, tasksAmount } = useSelector(
@@ -52,6 +53,7 @@ function TodoList () {
       </div>
 
       <ul className={styles.listContainer}>{todos.map(mapTodo)}</ul>
+      <TodoPagination amount={tasksAmount} />
     </>
   );
 }

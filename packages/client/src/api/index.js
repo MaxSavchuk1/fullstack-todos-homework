@@ -6,7 +6,7 @@ const axiosOptions = {
 
 const apiInstance = axios.create(axiosOptions);
 
-export const getTasks = () => apiInstance.get('/tasks');
+export const getTasks = page => apiInstance.get(`/tasks/?page=${page ?? 1}`);
 
 export const createTask = task => apiInstance.post('/tasks', task);
 

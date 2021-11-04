@@ -2,20 +2,19 @@ import { put } from 'redux-saga/effects';
 import * as API from '../api';
 import * as ACT from '../actions';
 
-export function * getTodosSaga () {
+export function * getTodosSaga ({ page }) {
   yield put(ACT.getTodosRequest());
   try {
     const {
       data: { data: tasks, metadata: tasksAmount },
-    } = yield API.getTasks();
+    } = yield API.getTasks(page);
     yield put(ACT.getTodosSuccess(tasks, tasksAmount));
   } catch (error) {
     yield put(ACT.getTodosError(error));
   }
 }
 
-export function * createTodoSaga (action) {
-  const { todo } = action;
+export function * createTodoSaga ({ todo }) {
   yield put(ACT.createTodoRequest());
   try {
     const {
@@ -27,8 +26,7 @@ export function * createTodoSaga (action) {
   }
 }
 
-export function * deleteTodoSaga (action) {
-  const { id } = action;
+export function * deleteTodoSaga ({ id }) {
   yield put(ACT.deleteTodoRequest());
   try {
     yield API.deleteTask(id);
@@ -38,8 +36,7 @@ export function * deleteTodoSaga (action) {
   }
 }
 
-export function * updateTodoSaga (action) {
-  const { id, isDone } = action;
+export function * updateTodoSaga ({ id, isDone }) {
   yield put(ACT.updateTodoRequest());
   try {
     const {
