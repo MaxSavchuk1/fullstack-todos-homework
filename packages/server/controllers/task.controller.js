@@ -5,7 +5,6 @@ const excludedData = ['createdAt', 'updatedAt'];
 
 module.exports.getTasks = async (req, res, next) => {
   const { pagination } = req;
-
   try {
     const foundTasks = await Task.findAll({
       raw: true,

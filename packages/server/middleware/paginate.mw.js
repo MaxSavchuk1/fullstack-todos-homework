@@ -5,14 +5,14 @@ const {
 
 module.exports.tasksPagination = async (req, res, next) => {
   const {
-    query: { page, results },
+    query: { offset, limit },
   } = req;
 
   const defaultPagination = { limit: 5, offset: 0 };
 
   const pagination = {
-    limit: results ?? defaultPagination.limit,
-    offset: (page - 1) * defaultPagination.limit,
+    limit: +limit ?? defaultPagination.limit,
+    offset: ((+offset === 0 ? 1 : +offset) - 1) * limit,
   };
 
   try {

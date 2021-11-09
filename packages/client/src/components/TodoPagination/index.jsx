@@ -1,21 +1,34 @@
 import React from 'react';
 import styles from './TodoPagination.module.sass';
 
-function TodoPagination ({ amount }) {
-  const limit = 5; // да, по-хорошему с сервера надо передавать еще и LIMIT
-  const totalPages = Math.ceil(amount / limit);
-  const pagination = [];
+function TodoPagination ({ tasksAmount, limit, setLimit, setOffset }) {
+  const totalPages = Math.ceil(tasksAmount / limit);
+  const pages = [];
   for (let i = 1; i <= totalPages; i++) {
-    pagination.push(i);
+    pages.push(i);
   }
-  const paginationMappingFunc = (el, i) => <li key={i}>{el}</li>;
+
+  const pagesMapping = (el, i) => (
+    <li key={i} onClick={e => setOffset(+e.target.innerText)}>
+      {el}
+    </li>
+  );
   return (
     <>
-      {amount / limit > 1 && (
-        <ul className={styles.pagesList}>
-          {pagination.map(paginationMappingFunc)}
-        </ul>
+      {tasksAmount / limit > 1 && (
+        <>
+          <br />
+          <span>Page:</span>
+          <ul className={styles.pagesList}>{pages.map(pagesMapping)}</ul>
+        </>
       )}
+      <div style={{ marginTop: 15 + 'px' }}>
+        <span style={{ marginRight: 15 + 'px' }}>Tasks on page:</span>
+        <button style={{ marginRight: 15 + 'px' }} onClick={() => setLimit(5)}>
+          5
+        </button>
+        <button onClick={() => setLimit(10)}>10</button>
+      </div>
     </>
   );
 }
